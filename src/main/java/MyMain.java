@@ -123,7 +123,7 @@ public class MyMain {
 
     // Tail recursive method
     public static ArrayList<Integer> insertTR(ArrayList<Integer> list, int x, int i) {
-        if (i == list.size() - 1){
+        if (i == list.size()){
             list.add(list.size(), x);
             return list;
         }
@@ -154,7 +154,17 @@ public class MyMain {
     // Examples:
     /// insertionSort([6, 3, 4, 1, 5, 8, 7, 2]) => [1, 2, 3, 4, 5, 6, 7, 8]
     public static ArrayList<Integer> insertionSort(ArrayList<Integer> list) {
-        // YOUR CODE HERE
-        return null;
+
+        if (list.size() == 1){
+
+            return list;
+        }
+        else {
+            int x = list.get(list.size() - 1);
+            list.remove(list.size() - 1);
+            list = insertionSort(list);
+            return insert(list, x);
+
+        }
     }
 }
